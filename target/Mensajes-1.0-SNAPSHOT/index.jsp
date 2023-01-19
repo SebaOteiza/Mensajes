@@ -23,52 +23,62 @@
 
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5"> Crear Mensaje</h1>
-                </div>
-                <div class="modal-body">
-                    <form>
+                <form action="index.jsp" method="POST">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5"> Crear Mensaje</h1>
+                    </div>
+                    <div class="modal-body">
+
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Ingrese un mensaje</label>
                             <textarea class="form-control" name="mensaje" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
                             <label>Autor</label>
-                            <input type="text" name="mensaje" class="form-control">
+                            <input type="text" name="autor" class="form-control">
                         </div>
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" name="enviar">Enviar</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5"> Todos los mensajes </h1>
-                </div>
-                <div class="modal-body">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Sebastián Oteiza</h5>
-                            
-                            <p class="card-text"> No sé por qué no logro desplegar la aplicación como corresponde</p>
-                            <p class="blockquote-footer"><cite>19/01/2023 02:10</cite></p>
-                            <a href="#" class="card-link">Editar</a>
-                            <a href="#" class="card-link">Eliminar</a>
-                        </div>
                     </div>
-                </div>
-                
-            </div>
-        </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" name="enviar">Enviar</button>
+                    </div>
+                    <form>
+                        </div>
+                        </div>
+
+                        <% 
+                        
+                        //recuperar los datos que están en la url
+                        
+                        String mensaje = request.getParameter("mensaje");
+                        String autor = request.getParameter("autor");
+
+                        
+                        %>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5"> Todos los mensajes </h1>
+                                </div>
+                                <div class="modal-body">
+                                   
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=autor%></h5>
+
+                                            <p class="card-text"> <%=mensaje%></p>
+                                            <p class="blockquote-footer"><cite>19/01/2023 02:10</cite></p>
+                                            <a href="#" class="card-link">Editar</a>
+                                            <a href="#" class="card-link">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
 
 
 
 
-    </body>
-</html>
+                        </body>
+                        </html>
