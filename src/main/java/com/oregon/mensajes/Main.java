@@ -23,13 +23,19 @@ public class Main {
       
         //EDITAR 
         
-        Mensaje msm = new Mensaje(1, "Hola desde Java WEB", "Java web");
-        int registro = mensajeDao.editar(msm);
-      System.out.println("Se ha editado "+ registro+ " registro");
+      //  Mensaje msm = new Mensaje(1, "Hola desde Java WEB", "Java web");
+       // int registro = mensajeDao.editar(msm);
+      //System.out.println("Se ha editado "+ registro+ " registro");
+      
+      //ELIMINAR REGISTRO
+      
+        Mensaje msm = new Mensaje(4);
+        int registro = mensajeDao.eliminar(msm);
+      System.out.println("Se ha ELIMINADO "+ registro+ " registro");
+      
       
         List<Mensaje> mensajes = mensajeDao.selecionar();
-        
-        
+       
         //recorrer la lista mensajes
         for(Mensaje mensaje : mensajes){
             System.out.println(mensaje);
