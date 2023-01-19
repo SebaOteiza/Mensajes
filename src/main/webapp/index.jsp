@@ -45,5 +45,30 @@
             </div>
         </div>
 
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5"> Todos los mensajes </h1>
+                </div>
+                <div class="modal-body">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Sebastián Oteiza</h5>
+                            
+                            <p class="card-text"> No sé por qué no logro desplegar la aplicación como corresponde</p>
+                            <p class="blockquote-footer"><cite>19/01/2023 02:10</cite></p>
+                            <a href="#" class="card-link">Editar</a>
+                            <a href="#" class="card-link">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+
+
+
     </body>
 </html>
