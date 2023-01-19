@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 //DAO significa objeto de acceso a datos/ DATA ACCES OBJECT, sirve para manejar el acceso de datos a la DB
 public class MensajeDao {
     
+    
+    //SELECCIONAR LOS REGISTROS DE LA DB
     private Connection conn = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
@@ -52,5 +54,35 @@ public class MensajeDao {
         return mensajes; //sería la lista que vamos a retornar 
     }
     
+    
+    //INSERTAR DATOS 
+    
+     public int insertar(Mensaje mensaje) throws ClassNotFoundException{
+        String sql = "INSERT INTO mensajes(mensaje, autor, fecha) VALUE(?,?, current_time())"; //query
+       
+        //para saber si realizó el insert
+        int registros = 0;
+        
+        try {
+            this.conn = getConexion(); //realizamos la conexion
+            this.ps = this.conn.prepareStatement(sql);
+            
+            this.ps.setString(1, mensaje.getMensaje()); //con esto obtenemos el valor o el campo del mensaje
+            this.ps.setString(2, mensaje.getAutor());
+            registros = this.ps.executeUpdate(); //actualizar en la tabla
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally{
+            try {
+                cerrar(this.ps);
+                cerrar(this.conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return registros; 
+    }
 
 }

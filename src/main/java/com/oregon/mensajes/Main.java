@@ -14,10 +14,19 @@ public class Main {
       //objeto de la clase DAO
       MensajeDao mensajeDao = new MensajeDao();
       
+      //crear el objeto
+      Mensaje msm = new Mensaje("Hola desde Main", "Main");
+      
+      //para insertar ese objeto
+      int registro = mensajeDao.insertar(msm);
+        System.out.println("Se inserto "+ registro+ " registro");
+      
+      
+      
         List<Mensaje> mensajes = mensajeDao.selecionar();
         
-        //recorrer la lista mensajes
         
+        //recorrer la lista mensajes
         for(Mensaje mensaje : mensajes){
             System.out.println(mensaje);
         }
