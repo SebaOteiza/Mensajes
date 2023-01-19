@@ -85,4 +85,35 @@ public class MensajeDao {
         return registros; 
     }
 
+     
+     //ACTUALIZAR REGISTROS 
+     
+      public int editar(Mensaje mensaje) throws ClassNotFoundException{
+        String sql = "UPDATE mensajes SET mensaje=?, autor=? WHERE id_mensaje = ?"; //query
+       
+        //para saber si realizó el insert
+        int registros = 0;
+        
+        try {
+            this.conn = getConexion(); //realizamos la conexion
+            this.ps = this.conn.prepareStatement(sql);
+            
+            this.ps.setString(1, mensaje.getMensaje()); //con esto obtenemos el valor o el campo del mensaje
+            this.ps.setString(2, mensaje.getAutor());
+            this.ps.setInt(3, mensaje.getId());
+            registros = this.ps.executeUpdate(); //actualizar en la tabla
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally{
+            try {
+                cerrar(this.ps);
+                cerrar(this.conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return registros; 
+    }
 }

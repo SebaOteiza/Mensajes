@@ -15,13 +15,17 @@ public class Main {
       MensajeDao mensajeDao = new MensajeDao();
       
       //crear el objeto
-      Mensaje msm = new Mensaje("Hola desde Main", "Main");
+     // Mensaje msm = new Mensaje("Hola desde Main", "Main");
       
       //para insertar ese objeto
-      int registro = mensajeDao.insertar(msm);
-        System.out.println("Se inserto "+ registro+ " registro");
+     // int registro = mensajeDao.insertar(msm);
+        //System.out.println("Se inserto "+ registro+ " registro");
       
-      
+        //EDITAR 
+        
+        Mensaje msm = new Mensaje(1, "Hola desde Java WEB", "Java web");
+        int registro = mensajeDao.editar(msm);
+      System.out.println("Se ha editado "+ registro+ " registro");
       
         List<Mensaje> mensajes = mensajeDao.selecionar();
         
