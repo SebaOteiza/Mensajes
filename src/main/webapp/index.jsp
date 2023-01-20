@@ -50,56 +50,66 @@
                     <form>
                         </div>
                         </div>
+                        
+                     <%
+                     //objeto de mensaje DAO
+                     MensajeDao mensajeDao = new MensajeDao();
+                     
+                       //crear un objeto de tipo mensaje con los datos asignados en los campos de abajo
+                       
+                       if (request.getParameter("enviar") != null){
+                               Mensaje mensaje = new Mensaje(
+                               request.getParameter("mensaje"), 
+                               request.getParameter("autor"));
+                        
+                         
+                        mensajeDao.insertar(mensaje);
+                        
+                         }
+                     %>
 
-                       // <% 
-                        
-                        //recuperar los datos que están en la url
-                        
-                        //String mensaje = request.getParameter("mensaje");
-                       // String autor = request.getParameter("autor");
+                        // <%
 
-                        
-                      //  %>
+                            //recuperar los datos que están en la url
+                            //String mensaje = request.getParameter("mensaje");
+                            // String autor = request.getParameter("autor");
+                           //  %>
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5"> Todos los mensajes </h1>
                                 </div>
                                 <%
-                                
-                                //objeto de mensaje DAO
-                                MensajeDao mensajeDao = new MensajeDao();
-                                
-                                //lista para recuperar de mensaje dao del metodo seleccionar
-                                List<Mensaje> mensajes = mensajeDao.selecionar();
-                                
-                                //invertir la lista de los mensajes
-                                
-                                Collections.reverse(mensajes);
-                                
-                                //recorrer
-                                
-                                for(Mensaje mensaje1 : mensajes){
+                                    //objeto de mensaje DAO
+                                   // MensajeDao mensajeDao = new MensajeDao();
+
+                                    //lista para recuperar de mensaje dao del metodo seleccionar
+                                    List<Mensaje> mensajes = mensajeDao.selecionar();
+
+                                    //invertir la lista de los mensajes
+                                    Collections.reverse(mensajes);
+
+                                    //recorrer
+                                    for (Mensaje mensaje1 : mensajes) {
                                 %>
                                 <div class="modal-body">
-                                   
-                                        <div class="card-body">
-                                            <h5 class="card-title"><%=mensaje.getAutor()%></h5>
 
-                                            <p class="card-text"> <%=mensaje.getMensaje()%></p>
-                                            <p class="blockquote-footer"><cite><%=mensaje.getFecha()%></cite></p>
-                                            <a href="#" class="card-link">Editar</a>
-                                            <a href="#" class="card-link">Eliminar</a>
-                                        </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%=mensaje.getAutor()%></h5>
+
+                                        <p class="card-text"> <%=mensaje.getMensaje()%></p>
+                                        <p class="blockquote-footer"><cite><%=mensaje.getFecha()%></cite></p>
+                                        <a href="editar.jsp?id=<%mensaje.getId()%>
+                                           &&mensaje=<%=mensaje.getMensaje()%>
+                                           &&autor=<%=mensaje.getAutor()%>" 
+                                           class="card-link">Editar</a>
+                                        <a href="eliminar.jsp?=id<%mensaje.getId()%>" class="card-link">Eliminar</a>
                                     </div>
                                 </div>
-                              <% } %>
                             </div>
+                            <% }%>
                         </div>
-
-
-
-
+                        </div>
 
                         </body>
                         </html>
