@@ -4,6 +4,11 @@
     Author     : Caos
 --%>
 
+
+
+<%@page import="com.oregon.mensajes.Mensaje"%>
+<%@page import="com.oregon.mensajes.MensajeDao"%>
+<%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -46,33 +51,49 @@
                         </div>
                         </div>
 
-                        <% 
+                       // <% 
                         
                         //recuperar los datos que están en la url
                         
-                        String mensaje = request.getParameter("mensaje");
-                        String autor = request.getParameter("autor");
+                        //String mensaje = request.getParameter("mensaje");
+                       // String autor = request.getParameter("autor");
 
                         
-                        %>
+                      //  %>
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5"> Todos los mensajes </h1>
                                 </div>
+                                <%
+                                
+                                //objeto de mensaje DAO
+                                MensajeDao mensajeDao = new MensajeDao();
+                                
+                                //lista para recuperar de mensaje dao del metodo seleccionar
+                                List<Mensaje> mensajes = mensajeDao.selecionar();
+                                
+                                //invertir la lista de los mensajes
+                                
+                                Collections.reverse(mensajes);
+                                
+                                //recorrer
+                                
+                                for(Mensaje mensaje1 : mensajes){
+                                %>
                                 <div class="modal-body">
                                    
                                         <div class="card-body">
-                                            <h5 class="card-title"><%=autor%></h5>
+                                            <h5 class="card-title"><%=mensaje.getAutor()%></h5>
 
-                                            <p class="card-text"> <%=mensaje%></p>
-                                            <p class="blockquote-footer"><cite>19/01/2023 02:10</cite></p>
+                                            <p class="card-text"> <%=mensaje.getMensaje()%></p>
+                                            <p class="blockquote-footer"><cite><%=mensaje.getFecha()%></cite></p>
                                             <a href="#" class="card-link">Editar</a>
                                             <a href="#" class="card-link">Eliminar</a>
                                         </div>
                                     </div>
                                 </div>
-
+                              <% } %>
                             </div>
                         </div>
 
